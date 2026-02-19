@@ -49,8 +49,8 @@ static bool IsAllowedLabelValue(Local<Value> value) {
          value->IsUndefined() || value->IsNull();
 }
 
-static bool ToLabelString(Isolate *isolate, Local<Context> context,
-                          Local<Value> value, Local<String> *out) {
+static bool ToLabelString(Local<Context> context, Local<Value> value,
+                          Local<String> *out) {
   if (value->IsString()) {
     *out = value.As<String>();
     return true;
@@ -153,8 +153,8 @@ void ClWrap::New(const v8::FunctionCallbackInfo<v8::Value> &args) {
 
     Local<String> k;
     Local<String> v;
-    if (!ToLabelString(isolate, context, args[k_idx], &k) ||
-        !ToLabelString(isolate, context, args[v_idx], &v)) {
+    if (!ToLabelString(context, args[k_idx], &k) ||
+        !ToLabelString(context, args[v_idx], &v)) {
       isolate->ThrowError("Failed to convert label to string");
       return;
     }
