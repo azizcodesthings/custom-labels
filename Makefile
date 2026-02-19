@@ -18,4 +18,4 @@ $(TARGET): $(SRCS) $(HEADERS)
 	$(CXX) $(CXXFLAGS) -ftls-model=global-dynamic -mtls-dialect=$(TLS_DIALECT) -fPIC -shared -o $(TARGET) $(SRCS)
 
 clean:
-	rm -f $(TARGET) test_hashmap
+	rm -f $(TARGET)

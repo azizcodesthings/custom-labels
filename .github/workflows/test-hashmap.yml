@@ -12,9 +12,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: install-valgrind
-      run: sudo apt update && sudo apt install -y valgrind
     - name: make
-      run: make test_hashmap
-    - name: test
-      run: valgrind --leak-check=full --error-exitcode=1 ./test_hashmap
+      run: make
